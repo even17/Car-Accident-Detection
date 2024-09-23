@@ -1,0 +1,666 @@
+Switch#confi t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#
+Switch(config)#
+Switch(config)#
+Switch(config)#en
+Switch(config)#en p
+Switch(config)#en password Cisco
+Switch(config)#
+Switch(config)#hos
+Switch(config)#hostname SW1
+SW1(config)#
+SW1(config)#
+SW1(config)#
+SW1(config)#
+SW1(config)#vl 10
+SW1(config-vlan)#name vlan10
+SW1(config-vlan)#
+SW1(config-vlan)#exi
+SW1(config)#vlan 20
+SW1(config-vlan)#nam
+SW1(config-vlan)#name vlan20
+SW1(config-vlan)#
+SW1(config-vlan)#
+SW1(config-vlan)#exi
+SW1(config)#
+SW1(config)#int
+SW1(config)#in
+SW1(config)#interface r
+SW1(config)#interface range fa
+SW1(config)#interface range fastEthernet 0/1-3
+                                            ^
+% Invalid input detected at '^' marker.
+
+SW1(config)#interface range fastEthernet 0
+SW1(config)#interface range fastEthernet ?
+  <0-1>  FastEthernet interface number
+
+SW1(config)#interface range fastEthernet 0-3
+                                          ^
+% Invalid input detected at '^' marker.
+
+SW1(config)#interface range fastEthernet 0 ?
+% Unrecognized command
+SW1(config)#interface range fastEthernet ?
+  <0-1>  FastEthernet interface number
+
+SW1(config)#interface range fas
+SW1(config)#interface range fastEthernet0
+SW1(config)#interface range fastEthernet 1
+SW1(config)#interface range fastEthernet 1 ?
+% Unrecognized command
+SW1(config)#interface range fastEthernet0/1 ?
+  ,  comma
+  -  hyphen
+  <cr>
+
+SW1(config)#interface range fastEthernet0/1 - 3
+SW1(config-if-range)#
+SW1(config-if-range)#
+SW1(config-if-range)#
+SW1(config-if-range)#ac
+SW1(config-if-range)#swi
+SW1(config-if-range)#switchport m
+SW1(config-if-range)#switchport mode ac
+SW1(config-if-range)#switchport mode access
+SW1(config-if-range)#
+SW1(config-if-range)#sw
+SW1(config-if-range)#switchport ac
+SW1(config-if-range)#switchport access vl
+SW1(config-if-range)#switchport access vlan 10
+SW1(config-if-range)#
+SW1(config-if-range)#
+SW1(config-if-range)#exi
+SW1(config)#
+SW1(config)#int
+SW1(config)#interface f
+SW1(config)#interface ra
+SW1(config)#interface range f
+SW1(config)#interface range fastEthernet0/4 -6
+SW1(config-if-range)#
+SW1(config-if-range)#
+SW1(config-if-range)#sw
+SW1(config-if-range)#switchport m
+SW1(config-if-range)#switchport mode acc
+SW1(config-if-range)#switchport mode access
+SW1(config-if-range)#sw
+SW1(config-if-range)#switchport ac
+SW1(config-if-range)#switchport access v
+SW1(config-if-range)#switchport access vlan 20
+SW1(config-if-range)#
+SW1(config-if-range)#
+SW1(config-if-range)#
+SW1(config-if-range)#exi
+SW1(config)#
+SW1(config)#
+SW1(config)#exi
+SW1#
+SW1#
+00:05:37: %SYS-5-CONFIG_I: Configured from console by consolesh
+SW1#ru
+SW1#sh
+SW1#show r`
+SW1#show r
+SW1#show run
+Building configuration...
+
+Current configuration : 1110 bytes
+!
+version 12.1
+no service pad
+service timestamps debug uptime
+service timestamps log uptime
+no service password-encryption
+!
+hostname SW1
+!
+enable password Cisco
+!
+ip subnet-zero
+!
+!
+spanning-tree mode pvst
+no spanning-tree optimize bpdu transmission
+spanning-tree extend system-id
+!
+!
+!
+!
+interface FastEthernet0/1
+ switchport access vlan 10
+ switchport mode access
+!
+interface FastEthernet0/2
+ switchport access vlan 10
+ switchport mode access
+!
+interface FastEthernet0/3
+ switchport access vlan 10
+ switchport mode access
+!
+interface FastEthernet0/4
+ switchport access vlan 20
+ switchport mode access
+!
+interface FastEthernet0/5
+ switchport access vlan 20
+ switchport mode access
+!
+interface FastEthernet0/6
+ switchport access vlan 20
+ switchport mode access
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ no ip route-cache
+ shutdown
+!
+ip http server
+!
+line con 0
+line vty 5 15
+!
+!
+end
+
+SW1#
+SW1#
+SW1#
+SW1#
+SW1#
+SW1#sh
+SW1#show vlan
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/7, Fa0/8, Fa0/9, Fa0/10
+                                                Fa0/11, Fa0/12, Gi0/1, Gi0/2
+10   vlan10                           active    Fa0/1, Fa0/2, Fa0/3
+20   vlan20                           active    Fa0/4, Fa0/5, Fa0/6
+1002 fddi-default                     act/unsup
+1003 token-ring-default               act/unsup
+1004 fddinet-default                  act/unsup
+1005 trnet-default                    act/unsup
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0
+10   enet  100010     1500  -      -      -        -    -        0      0
+20   enet  100020     1500  -      -      -        -    -        0      0
+1002 fddi  101002     1500  -      -      -        -    -        0      0
+1003 tr    101003     1500  -      -      -        -    -        0      0
+1004 fdnet 101004     1500  -      -      -        ieee -        0      0
+1005 trnet 101005     1500  -      -      -        ibm  -        0      0
+
+Remote SPAN VLANs
+------------------------------------------------------------------------------
+
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+SW1#
+SW1#
+SW1#
+SW1#
+SW1#
+SW1#de
+SW1#con
+SW1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SW1(config)#
+SW1(config)#
+SW1(config)#de
+SW1(config)#def
+SW1(config)#de
+SW1(config)#del
+SW1(config)#
+SW1(config)#
+SW1(config)#
+SW1(config)#
+SW1(config)#
+SW1(config)#
+SW1(config)#exi
+SW1#
+SW1#
+SW1#
+SW1#
+00:08:16: %SYS-5-CONFIG_I: Configured from console by consolewri
+SW1#write er
+SW1#write erase
+Erasing the nvram filesystem will remove all configuration files! Continue? [confirm]n
+SW1#
+SW1#
+SW1#show run
+Building configuration...
+
+Current configuration : 1110 bytes
+!
+version 12.1
+no service pad
+service timestamps debug uptime
+service timestamps log uptime
+no service password-encryption
+!
+hostname SW1
+!
+enable password Cisco
+!
+ip subnet-zero
+!
+!
+spanning-tree mode pvst
+no spanning-tree optimize bpdu transmission
+spanning-tree extend system-id
+!
+!
+!
+!
+interface FastEthernet0/1
+ switchport access vlan 10
+ switchport mode access
+!
+interface FastEthernet0/2
+ switchport access vlan 10
+ switchport mode access
+!
+interface FastEthernet0/3
+ switchport access vlan 10
+ switchport mode access
+!
+interface FastEthernet0/4
+ switchport access vlan 20
+ switchport mode access
+!
+interface FastEthernet0/5
+ switchport access vlan 20
+ switchport mode access
+!
+interface FastEthernet0/6
+ switchport access vlan 20
+ switchport mode access
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ no ip route-cache
+ shutdown
+!
+ip http server
+!
+line con 0
+line vty 5 15
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+Switch>en
+Switch#vl 10
+          ^
+% Invalid input detected at '^' marker.
+
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#vl 10
+Switch(config-vlan)#name vlan10
+Switch(config-vlan)#exit
+Switch(config)#switchport mode access
+                ^
+% Invalid input detected at '^' marker.
+
+Switch(config)#switch mode access
+                ^
+% Invalid input detected at '^' marker.
+
+Switch(config)#interface fa
+Switch(config)#interface fastEthernet
+% Incomplete command.
+
+Switch(config)#interface fastEthernet 0/1
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport access vlan 10
+Switch(config-if)#do show vlans
+show vlans
+         ^
+% Invalid input detected at '^' marker.
+
+Switch(config-if)#do show vlan
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/2, Fa0/3, Fa0/4, Fa0/5
+                                                Fa0/6, Fa0/7, Fa0/8, Fa0/9
+                                                Fa0/10, Fa0/11, Fa0/12, Gi0/1
+                                                Gi0/2
+10   vlan10                           active    Fa0/1
+1002 fddi-default                     act/unsup
+1003 token-ring-default               act/unsup
+1004 fddinet-default                  act/unsup
+1005 trnet-default                    act/unsup
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0
+10   enet  100010     1500  -      -      -        -    -        0      0
+1002 fddi  101002     1500  -      -      -        -    -        0      0
+1003 tr    101003     1500  -      -      -        -    -        0      0
+1004 fdnet 101004     1500  -      -      -        ieee -        0      0
+1005 trnet 101005     1500  -      -      -        ibm  -        0      0
+
+Remote SPAN VLANs
+
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+Switch(config-if)#do show ip address
+show ip address
+         ^
+% Invalid input detected at '^' marker.
+
+Switch(config-if)#exit
+Switch(config)#do show ip address
+show ip address
+         ^
+% Invalid input detected at '^' marker.
+
+Switch(config)#exit
+Switch#
+01:24:07: %SYS-5-CONFIG_I: Configured from console by console
+Switch#show ip address
+                ^
+% Invalid input detected at '^' marker.
+
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#interface vlan10
+Switch(config-if)#
+01:25:09: %LINK-3-UPDOWN: Interface Vlan10, changed state to up
+01:25:10: %LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan10, changed state to downdo show ip address
+show ip address
+         ^
+% Invalid input detected at '^' marker.
+
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#do show ip rou
+show ip rou
+         ^
+% Invalid input detected at '^' marker.
+
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#do show vl
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/2, Fa0/3, Fa0/4, Fa0/5
+                                                Fa0/6, Fa0/7, Fa0/8, Fa0/9
+                                                Fa0/10, Fa0/11, Fa0/12, Gi0/1
+                                                Gi0/2
+10   vlan10                           active    Fa0/1
+1002 fddi-default                     act/unsup
+1003 token-ring-default               act/unsup
+1004 fddinet-default                  act/unsup
+1005 trnet-default                    act/unsup
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0
+10   enet  100010     1500  -      -      -        -    -        0      0
+1002 fddi  101002     1500  -      -      -        -    -        0      0
+1003 tr    101003     1500  -      -      -        -    -        0      0
+1004 fdnet 101004     1500  -      -      -        ieee -        0      0
+1005 trnet 101005     1500  -      -      -        ibm  -        0      0
+
+Remote SPAN VLANs
+------------------------------------------------------------------------------
+
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#exi
+Switch(config)#exi
+Switch#
+Switch#
+Switch#s
+01:26:11: %SYS-5-CONFIG_I: Configured from console by consoleo run
+        ^
+% Invalid input detected at '^' marker.
+
+Switch#
+Switch#
+Switch#
+Switch#
+Switch#show run
+Building configuration...
+
+Current configuration : 889 bytes
+!
+version 12.1
+no service pad
+service timestamps debug uptime
+service timestamps log uptime
+no service password-encryption
+!
+hostname Switch
+!
+!
+ip subnet-zero
+!
+!
+spanning-tree mode pvst
+no spanning-tree optimize bpdu transmission
+spanning-tree extend system-id
+!
+!
+!
+!
+interface FastEthernet0/1
+ switchport access vlan 10
+ switchport mode access
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ no ip route-cache
+ shutdown
+!
+interface Vlan10
+ no ip address
+ no ip route-cache
+!
+ip http server
+!
+line con 0
+line vty 5 15
+!
+!
+end
+
+Switch#
+Switch#
+Switch#
+Switch#
+Switch#
+Switch#
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#interface vlan 10
+Switch(config-if)#ip address 192.168.30.1 255.255.255.0
+Switch(config-if)#do show run
+Building configuration...
+
+Current configuration : 913 bytes
+!
+version 12.1
+no service pad
+service timestamps debug uptime
+service timestamps log uptime
+no service password-encryption
+!
+hostname Switch
+!
+!
+ip subnet-zero
+!
+!
+spanning-tree mode pvst
+no spanning-tree optimize bpdu transmission
+spanning-tree extend system-id
+!
+!
+!
+!
+interface FastEthernet0/1
+ switchport access vlan 10
+ switchport mode access
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ no ip route-cache
+ shutdown
+!
+interface Vlan10
+ ip address 192.168.30.1 255.255.255.0
+ no ip route-cache
+!
+ip http server
+!
+line con 0
+line vty 5 15
+
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#do show rou
+show rou
+      ^
+% Invalid input detected at '^' marker.
+
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#
+Switch(config-if)#exi
+Switch(config)#
+Switch(config)#
+Switch(config)#
+Switch(config)#do  show rou
+show rou
+      ^
+% Invalid input detected at '^' marker.
+
+Switch(config)#
+Switch(config)#
+Switch(config)#
+Switch(config)#do show ip rou
+show ip rou
+         ^
+% Invalid input detected at '^' marker.
+
+Switch(config)#
+Switch(config)#
+Switch(config)#
+Switch(config)#
+Switch(config)#
+Switch(config)#exi
+Switch#
+Switch#
+Switch#
+
