@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<title>Accident</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}">
+<body>
+
+
+
+<!-- Sidebar -->
+<div class="w3-sidebar w3-dark-grey w3-bar-block" style="width:25%">
+  <h3 class="w3-bar-item">Menu</h3>
+  <a href="home" class="w3-bar-item w3-button">Home</a>
+  <a href="image" class="w3-bar-item w3-button">Detect Accident</a>
+  <a href="video" class="w3-bar-item w3-button">Detect From Video</a>
+</div>
+
+<!-- Page Content -->
+<div style="margin-left:25%">
+
+<div class="w3-container w3-dark-grey">
+  <h1>Car Accident Detection by CNN</h1>
+</div>
+
+{% block content %}
+{% endblock %}
+
+<div class="background"></div>
+<div class="content"></div>
+
+<!-- Footer-->
+<div class="w3-container w3-blue">
+  <div class="w3-container w3-cell w3-mobile" style="width:85%, height=50%">
+    <h5>Developed By Abenezer Tsehaye</h5>
+       
+  </div>
+
+</div>
+      
+</body>
+</html>
