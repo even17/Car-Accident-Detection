@@ -4,8 +4,8 @@ import numpy as np
 from twilio.rest import Client
 import cv2
 
-account_sid = 'AC3ee91700d2d84bf6851054f9d79df7a2'
-auth_token = '9f3e68ad69db0ea4a0cfc0b7f3b0d7e5'
+account_sid = 'AC3ee91700d2dbf6851054f9d79df7a2'
+auth_token = '9f3e68ad69dea4a0cfc0b7f3b0d7e5'
 client = Client(account_sid, auth_token)
 
 # Disable scientific notation for clarity
